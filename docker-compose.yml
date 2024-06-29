@@ -1,0 +1,19 @@
+version: '1.0'
+
+services:
+  db:
+    image: postgres
+    ports:
+      - ${DATABASE_PORT}:${DATABASE_PORT}
+    environment:
+      POSTGRES_USER: ${DATABASE_USER}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+      POSTGRES_DB: ${DATABASE_NAME}
+  api:
+    build: .
+    ports:
+      - 8080:8080
+    environment:
+      DATABASE_HOST: db
+    depends_on:
+      - db

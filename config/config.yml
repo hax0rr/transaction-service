@@ -1,0 +1,15 @@
+SERVER:
+  PORT: 8080
+  LOG_LEVEL: "info"
+  READ_TIMEOUT_MS: 1000
+  WRITE_TIMEOUT_MS: 1000
+  GRACEFUL_SHUTDOWN_TIMEOUT_MS: 3000
+DATABASE:
+  NAME: "transaction-service"
+  HOST: "localhost"
+  USER: "postgres"
+  PASSWORD: "kJBKuk927BedK"
+  PORT: 5432
+  DRIVER: "postgres"
+  TIMEOUT_IN_MS: 1000
+  MIGRATION_PATH: "file://db/migration"
