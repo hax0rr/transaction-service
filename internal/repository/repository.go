@@ -2,9 +2,9 @@ package repository
 
 import (
 	"context"
+	"github.com/hax0rr/transaction-service/internal/entity"
 	"github.com/jmoiron/sqlx"
 	"time"
-	"transaction-service/internal/entity"
 )
 
 const (

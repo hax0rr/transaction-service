@@ -1,9 +1,9 @@
 package main
 
 import (
+	"github.com/hax0rr/transaction-service/cmd"
+	"github.com/hax0rr/transaction-service/config"
 	"log"
-	"transaction-service/cmd"
-	"transaction-service/config"
 )
 
 const configFile = "config/config.yml"

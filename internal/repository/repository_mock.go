@@ -12,7 +12,7 @@ package repository
 import (
 	context "context"
 	reflect "reflect"
-	entity "transaction-service/internal/entity"
+	entity "github.com/hax0rr/transaction-service/internal/entity"
 
 	gomock "go.uber.org/mock/gomock"
 )

@@ -5,8 +5,8 @@ import (
 	"database/sql"
 	"errors"
 	"fmt"
-	"transaction-service/internal/entity"
-	"transaction-service/internal/repository"
+	"github.com/hax0rr/transaction-service/internal/entity"
+	"github.com/hax0rr/transaction-service/internal/repository"
 )
 
 var ErrAccountNotFound = errors.New("account not found")

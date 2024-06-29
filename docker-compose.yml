@@ -3,6 +3,7 @@ version: '1.0'
 services:
   db:
     image: postgres
+    container_name: txn-svc-postgres
     ports:
       - ${DATABASE_PORT}:${DATABASE_PORT}
     environment:
@@ -10,6 +11,7 @@ services:
       POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
       POSTGRES_DB: ${DATABASE_NAME}
   api:
+    container_name: txn-svc-api
     build: .
     ports:
       - 8080:8080

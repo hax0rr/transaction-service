@@ -1,8 +1,8 @@
 package cmd
 
 import (
+	"github.com/hax0rr/transaction-service/config"
 	"github.com/spf13/cobra"
-	"transaction-service/config"
 )
 
 func NewCLI(config *config.Config) *cobra.Command {

@@ -1,10 +1,10 @@
 package config
 
 import (
+	"github.com/hax0rr/transaction-service/db"
+	"github.com/hax0rr/transaction-service/httpserver"
 	"github.com/spf13/viper"
 	"strings"
-	"transaction-service/db"
-	"transaction-service/httpserver"
 )
 
 const configFile = "config/config.yml"

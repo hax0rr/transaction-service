@@ -4,12 +4,12 @@ import (
 	"encoding/json"
 	"errors"
 	"github.com/google/uuid"
+	"github.com/hax0rr/transaction-service/handler"
+	"github.com/hax0rr/transaction-service/internal/entity"
+	"github.com/hax0rr/transaction-service/internal/service/account"
+	"github.com/hax0rr/transaction-service/internal/service/transaction"
 	"github.com/rs/zerolog"
 	"net/http"
-	"transaction-service/handler"
-	"transaction-service/internal/entity"
-	"transaction-service/internal/service/account"
-	"transaction-service/internal/service/transaction"
 )
 
 //

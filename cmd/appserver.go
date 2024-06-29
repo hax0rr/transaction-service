@@ -1,13 +1,13 @@
 package cmd
 
 import (
+	"github.com/hax0rr/transaction-service/app"
+	"github.com/hax0rr/transaction-service/config"
+	"github.com/hax0rr/transaction-service/httpserver"
 	"github.com/spf13/cobra"
 	"os"
 	"os/signal"
 	"syscall"
-	"transaction-service/app"
-	"transaction-service/config"
-	"transaction-service/httpserver"
 )
 
 func newStartAppServerCommand(config *config.Config) *cobra.Command {

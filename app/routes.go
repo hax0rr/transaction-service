@@ -2,12 +2,12 @@ package app
 
 import (
 	"github.com/gorilla/mux"
+	_ "github.com/hax0rr/transaction-service/docs"
+	"github.com/hax0rr/transaction-service/handler"
+	"github.com/hax0rr/transaction-service/handler/v1/account"
+	"github.com/hax0rr/transaction-service/handler/v1/transaction"
 	httpSwagger "github.com/swaggo/http-swagger"
 	"net/http"
-	_ "transaction-service/docs"
-	"transaction-service/handler"
-	"transaction-service/handler/v1/account"
-	"transaction-service/handler/v1/transaction"
 )
 
 //	@title			Transaction Service APIs

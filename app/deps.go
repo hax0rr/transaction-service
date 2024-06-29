@@ -1,15 +1,15 @@
 package app
 
 import (
+	"github.com/hax0rr/transaction-service/config"
+	"github.com/hax0rr/transaction-service/db"
+	"github.com/hax0rr/transaction-service/httpserver"
+	"github.com/hax0rr/transaction-service/internal/repository"
+	"github.com/hax0rr/transaction-service/internal/service/account"
+	"github.com/hax0rr/transaction-service/internal/service/transaction"
 	_ "github.com/lib/pq"
 	"github.com/rs/zerolog"
 	"os"
-	"transaction-service/config"
-	"transaction-service/db"
-	"transaction-service/httpserver"
-	"transaction-service/internal/repository"
-	"transaction-service/internal/service/account"
-	"transaction-service/internal/service/transaction"
 )
 
 type Dependencies struct {

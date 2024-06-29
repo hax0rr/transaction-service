@@ -1,9 +1,9 @@
 package cmd
 
 import (
+	"github.com/hax0rr/transaction-service/config"
+	"github.com/hax0rr/transaction-service/db"
 	"github.com/spf13/cobra"
-	"transaction-service/config"
-	"transaction-service/db"
 )
 
 func newMigrateCommand(config *config.Config) *cobra.Command {

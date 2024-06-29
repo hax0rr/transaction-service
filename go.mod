@@ -1,4 +1,4 @@
-module transaction-service
+module github.com/hax0rr/transaction-service
 
 go 1.20
 

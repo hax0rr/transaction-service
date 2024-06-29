@@ -4,12 +4,12 @@ import (
 	"encoding/json"
 	"github.com/google/uuid"
 	"github.com/gorilla/mux"
+	"github.com/hax0rr/transaction-service/handler"
+	"github.com/hax0rr/transaction-service/internal/entity"
+	"github.com/hax0rr/transaction-service/internal/service/account"
 	"github.com/pkg/errors"
 	"github.com/rs/zerolog"
 	"net/http"
-	"transaction-service/handler"
-	"transaction-service/internal/entity"
-	"transaction-service/internal/service/account"
 )
 
 type Handler struct {

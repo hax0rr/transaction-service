@@ -3,11 +3,11 @@ package account
 import (
 	"context"
 	"errors"
+	"github.com/hax0rr/transaction-service/internal/entity"
+	"github.com/hax0rr/transaction-service/internal/repository"
 	"go.uber.org/mock/gomock"
 	"reflect"
 	"testing"
-	"transaction-service/internal/entity"
-	"transaction-service/internal/repository"
 )
 
 func TestService_CreateAccount(t *testing.T) {
