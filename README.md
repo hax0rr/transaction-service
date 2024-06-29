@@ -26,4 +26,10 @@ Below tables can be accessed after running `make up` and `make exec-db` in your 
 - accounts (example query: `select * from accounts limit 1;`)
 - transactions (example query: `select * from transactions limit 1;`)
 
+## Tech stack and tools
+- Go 1.20
+- Postgres
+- Docker
+- [gomock framework](https://github.com/uber-go/mock) for mocks used in tests
+- [swaggo](https://github.com/swaggo/http-swagger) for API documentation
 
