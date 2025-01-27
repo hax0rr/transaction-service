@@ -23,7 +23,8 @@ jobs:
     - name: Check for Changes
       id: check_changes
       run: |
-        if [[ -n "$(git diff --exit-code)" ]]; then
+        echo "This is some file content generated on $(date)" > new-file.txt
+        if [[ -n "$(git status --porcelain)" ]]; then
           echo "Changes detected."
           echo "::set-output name=has_changes::true"
         else
