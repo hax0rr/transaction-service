@@ -5,15 +5,6 @@ from datetime import datetime, timedelta
 def generate_campaign_dag(dag_id, campaign_id, schedule, schedule_type):
     """Function to dynamically generate a campaign DAG based on the campaign inputs"""
 
-    print(os.getcwd())
-
-    default_args = {
-        'owner': 'airflow',
-        'depends_on_past': False,
-        'retries': 1,
-        'retry_delay': timedelta(minutes=1),
-    }
-
     if schedule_type == 'one-time':
         start_date = datetime.strptime(schedule, "%Y-%m-%d %H:%M:%S")
         schedule_interval = None
@@ -27,13 +18,18 @@ from airflow import DAG
 from airflow.operators.dummy_operator import DummyOperator
 from datetime import datetime, timedelta
 
-default_args = {default_args}
+default_args = {{
+   'owner': 'airflow',
+   'depends_on_past': False,
+   'retries': 1,
+   'retry_delay': timedelta(minutes=1),
+}}
 
 dag = DAG(
     dag_id='{dag_id}',
     default_args=default_args,
     schedule_interval='{schedule_interval}',
-    start_date={start_date},
+    start_date=datetime({start_date.year}, {start_date.month}, {start_date.day}, {start_date.hour}, {start_date.minute}, {start_date.second}),
     catchup=False
 )
 
@@ -44,11 +40,6 @@ end = DummyOperator(task_id="end", dag=dag)
 
 start >> end
     """
-
-    # Create DAG file in the dags directory
-    print(os.getcwd())
-    print(dag_id)
-
 
     dags_directory = 'airflow/dags'
     # Construct the full file path
