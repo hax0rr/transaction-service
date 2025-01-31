@@ -47,6 +47,7 @@ def generate_campaign_dag(dag_id, campaign_id, schedule, schedule_type):
 
     # Create DAG file in the dags directory
     print(os.getcwd())
+    print(dag_id)
 
 
     dags_directory = 'dags'
