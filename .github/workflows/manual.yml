@@ -51,6 +51,7 @@ jobs:
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
           git checkout -b "new_test"
+          git pull origin new_test
           git push --set-upstream origin new_test
           git add airflow/dags/${{ github.event.inputs.dagId }}.py
           git commit -m "Added Dag ID: ${{ github.event.inputs.dagId }}"
