@@ -23,26 +23,26 @@ def generate_campaign_dag(dag_id, campaign_id, schedule, schedule_type):
 
     # Defines DAG content
     dag_content = f"""
-    from airflow import DAG
-    from airflow.operators.dummy_operator import DummyOperator
-    from datetime import datetime, timedelta
+from airflow import DAG
+from airflow.operators.dummy_operator import DummyOperator
+from datetime import datetime, timedelta
 
-    default_args = {default_args}
+default_args = {default_args}
 
-    dag = DAG(
-        dag_id='{dag_id}',
-        default_args=default_args,
-        schedule_interval='{schedule_interval}',
-        start_date={start_date},
-        catchup=False
-    )
-    
-    campaignId = {campaign_id}
+dag = DAG(
+    dag_id='{dag_id}',
+    default_args=default_args,
+    schedule_interval='{schedule_interval}',
+    start_date={start_date},
+    catchup=False
+)
 
-    start = DummyOperator(task_id="start", dag=dag)
-    end = DummyOperator(task_id="end", dag=dag)
+campaignId = {campaign_id}
 
-    start >> end
+start = DummyOperator(task_id="start", dag=dag)
+end = DummyOperator(task_id="end", dag=dag)
+
+start >> end
     """
 
     # Create DAG file in the dags directory
