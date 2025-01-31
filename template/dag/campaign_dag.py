@@ -60,9 +60,9 @@ if len(sys.argv) != 4:
     print("Usage: python generate_dag.py <campaign_id> <schedule> <schedule_type>")
     sys.exit(1)
 
-dag_id = sys.argv[1]
-campaign_id = sys.argv[2]
-schedule = sys.argv[3]
-schedule_type = sys.argv[4]
+dag_id = sys.argv[0]
+campaign_id = sys.argv[1]
+schedule = sys.argv[2]
+schedule_type = sys.argv[3]
 
 generate_campaign_dag(dag_id, campaign_id, schedule, schedule_type)
