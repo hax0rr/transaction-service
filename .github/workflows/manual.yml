@@ -1,49 +1,60 @@
-# Controls when the action will run. Workflow runs when manually triggered using the UI
-# or API.
+name: Schedule an Airflow DAG
+
 on:
   workflow_dispatch:
+    inputs:
+      campaignId:
+        description: 'Campaign ID'
+        required: true
+      campaignName:
+        description: 'Campaign Name'
+        required: true
+      dagId:
+        description: 'Dag ID'
+        required: true
+      schedule:
+        description: 'Schedule ex: 2024-10-12 12:21:12'
+        required: true
+      scheduleType:
+        description: 'Type of schedule (one-time / recurring)'
+        required: true
 
-name: Make File Changes to GitHub Repo
-
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "greet"
-  make-file-changes:
-    # The type of runner that the job will run on
+  validate-inputs:
     runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    # Runs a single command using the runners shell
-    - uses: actions/checkout@v4
-    - name: Modify files
-      run: |
-        echo "change files here"
+      - name: Check Inputs
+        run: |
+          echo "Campaign ID: ${{ github.event.inputs.campaignId }}"
+          echo "Campaign Name: ${{ github.event.inputs.campaignName }}"
+          echo "Schedule: ${{ github.event.inputs.schedule }}"
+          echo "Dag ID: ${{ github.event.inputs.dagId }}"
 
-    - name: Check for Changes
-      id: check_changes
-      run: |
-        echo "This is some file content generated on $(date)" > new-file.txt
-        if [[ -n "$(git status --porcelain)" ]]; then
-          echo "Changes detected."
-          echo "::set-output name=has_changes::true"
-        else
-          echo "No changes detected."
-          echo "::set-output name=has_changes::false"
-        fi
+  generate-dag:
+    needs: validate-inputs
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
 
-    - name: Commit and Push Changes
-      if: steps.check_changes.outputs.has_changes == 'true'
-      run: |
-        # configure user
-        git config --global user.name "${{ github.actor }}"
-        git config --global user.email "${{ github.actor }}@users.noreply.github.com"
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+#
+#      - name: Install dependencies
+#        run: |
+#          pip install pytz  # Install any required dependencies
 
-        # stage any file changes to be committed
-        git add .
+      - name: Run DAG generation script
+        run: |
+          python generate_dag.py "${{ github.event.inputs.dag_id }} ${{ github.event.inputs.campaign_id }}" "${{ github.event.inputs.schedule }}" "${{ github.event.inputs.schedule_type }}"
 
-        # make commit with staged changes
-        git commit -m 'files changed'
-
-        # push the commit back up to source GitHub repository
-        git push
+      - name: Commit and Push the DAG file
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+          git checkout -b "new_test"
+          git add airflow/dags/${{ github.event.inputs.dagId }}.py
+          git commit -m "Added Dag ID: ${{ github.event.inputs.dagId }}"
+          git push
