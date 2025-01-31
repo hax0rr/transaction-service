@@ -64,7 +64,7 @@ def generate_campaign_dag(dag_id, campaign_id, schedule, schedule_type):
     print(f"DAG file {dag_file_path} created successfully.")
 
 # Get campaign details passed from GitHub Actions inputs
-if len(sys.argv) != 4:
+if len(sys.argv) != 5:
     print("Usage: python generate_dag.py <campaign_id> <schedule> <schedule_type>")
     sys.exit(1)
 
