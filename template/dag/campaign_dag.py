@@ -5,6 +5,8 @@ from datetime import datetime, timedelta
 def generate_campaign_dag(dag_id, campaign_id, schedule, schedule_type):
     """Function to dynamically generate a campaign DAG based on the campaign inputs"""
 
+	print(dag_id)
+
     default_args = {
         'owner': 'airflow',
         'depends_on_past': False,
@@ -44,6 +46,9 @@ def generate_campaign_dag(dag_id, campaign_id, schedule, schedule_type):
     """
 
     # Create DAG file in the dags directory
+    print(os.getcwd())
+
+
     dags_directory = 'dags'
     if not os.path.exists(dags_directory):
         os.makedirs(dags_directory)
