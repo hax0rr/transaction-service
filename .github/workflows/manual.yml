@@ -44,7 +44,7 @@ jobs:
 
       - name: Run DAG generation script
         run: |
-          python template/dag/campaign_dag.py "${{ github.event.inputs.dag_id }} ${{ github.event.inputs.campaign_id }}" "${{ github.event.inputs.schedule }}" "${{ github.event.inputs.schedule_type }}"
+          python template/dag/campaign_dag.py "${{ github.event.inputs.dagId }} ${{ github.event.inputs.campaignId }}" "${{ github.event.inputs.schedule }}" "${{ github.event.inputs.scheduleType }}"
 
       - name: Commit and Push the DAG file
         run: |
