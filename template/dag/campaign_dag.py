@@ -50,11 +50,13 @@ def generate_campaign_dag(dag_id, campaign_id, schedule, schedule_type):
     print(dag_id)
 
 
-    dags_directory = 'dags'
-    if not os.path.exists(dags_directory):
-        os.makedirs(dags_directory)
-
+    dags_directory = 'airflow/dags'
+    # Construct the full file path
     dag_file_path = os.path.join(dags_directory, f"{dag_id}.py")
+
+    # Ensure the directory exists
+    os.makedirs(os.path.dirname(dag_file_path), exist_ok=True)
+
 
     with open(dag_file_path, 'w') as f:
         f.write(dag_content)
